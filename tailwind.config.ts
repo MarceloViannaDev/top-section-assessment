@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero--bg-main': "url('/hero--bg-main.png')",
+        'hero--main': "url('/hero--bg-main.png')",
       },
       colors: {
         'color--green': {
