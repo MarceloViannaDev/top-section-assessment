@@ -9,6 +9,9 @@
 .container--wrapper {
   @apply container mx-auto px-4 lg:px-8 lg:max-w-[80rem];
 }
+body {
+  @apply overflow-hidden;
+}
 /* Typography globals */
 h1 span {
   @apply text-color--green;

@@ -3,15 +3,64 @@
 //TODO: 3) Componentizar toda a Header section
 //TODO: 4) Dar continuidade
 
+'use client';
+
 import { BtnPrimary } from '@/components/ui/buttons/Buttons';
 import { H1Primary } from '@/components/ui/typography/Headings';
 import { PPrimary } from '@/components/ui/typography/Paragraphs';
-import { Menu } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Home() {
+  const [ShowNav, setShowNav] = useState(false);
+  const toggleNav = () => {
+    setShowNav((current) => !current);
+  };
+
   return (
     /* CONTAINER HEADER SECTION */
     <header className="container--section">
+      {/* HIDDEN MENU START */}
+      <AnimatePresence>
+        {ShowNav && (
+          <motion.div
+            className="absolute top-0 left-0 z-50 w-full h-screen bg-color--green bg-opacity-95"
+            initial={{ opacity: 0, x: 300 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 500 }}>
+            <div className="relative container--wrapper">
+              <X /* CROSS button  */
+                className="absolute cursor-pointer right-2 top-12 md:right-8 md:top-8"
+                size={40}
+                strokeWidth={1.5}
+                onClick={toggleNav}
+              />
+              <ul className="flex flex-col items-center justify-center w-full h-screen gap-4 font-semibold uppercase mt-[-2.25rem] md:mt-0 md:text-2xl">
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Início</a>
+                </li>
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Depoimentos</a>
+                </li>
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Especialistas</a>
+                </li>
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Como Crescer</a>
+                </li>
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Conteúdos Gratuitos</a>
+                </li>
+                <li className=" hover:bg-color--green-400 hover:px-4 hover:rounded-full">
+                  <a href="#">Chamar no Whats</a>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* CONTAINER NAV*/}
       <div className="sticky bg-color--black drop-shadow-md">
         {/* CONTAINER WRAPPER */}
@@ -22,11 +71,14 @@ export default function Home() {
             {/* NAV SECTION */}
             <nav className="text-slate-50">
               {/* HAMBURGUER MENU */}
+
               <Menu
-                size={20}
+                size={30}
                 strokeWidth={1.5}
-                className="cursor-pointer lg:hidden"
+                className="cursor-pointer lg:hidden text-color--green"
+                onClick={toggleNav}
               />
+
               {/* DESTOP MENU */}
               <ul className="hidden lg:flex lg:gap-4 lg:text-sm xl:text-base xl:gap-8">
                 <li>
