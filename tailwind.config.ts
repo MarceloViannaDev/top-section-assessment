@@ -4,6 +4,7 @@ const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      /* BACKGROUND HERO SECTION */
       backgroundImage: {
         'hero--main': "url('/hero--bg-main.png')",
       },
