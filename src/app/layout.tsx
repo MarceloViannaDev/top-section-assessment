@@ -9,11 +9,7 @@ export const metadata: Metadata = {
   description: 'Atrair pessoas e criar relacionamentos.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="br">
       <body className={montserrat.className}>{children}</body>
